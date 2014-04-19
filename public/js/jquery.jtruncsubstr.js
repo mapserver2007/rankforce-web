@@ -4,8 +4,8 @@
 		var defaults = {
 			length: 300,
 			minTrail: 20,
-			moreText: "more",
-			lessText: "less",
+			moreText: "もっと見る",
+			lessText: "折りたたむ",
 			ellipsisText: "...",
 			moreAni: 500,
 			lessAni: 500,
