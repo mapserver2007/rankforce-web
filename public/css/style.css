@@ -15,9 +15,21 @@ div.separator {
     margin: 0 10px;
 }
 #ikioi_info {
-    margin-top: 10px;
     display: none;
 }
-#ikioi_info section {
-    padding: 0 10px;
+#other_thread_info {
+    display: none;
+}
+#other_thread_info ul {
+    margin-left: 10px;
+    font-size: 12px;
+}
+div.stp-content-body article {
+    padding: 10px;
+}
+div..stp-content-body section div {
+    margin-left: 10px;
+}
+#ikioi, #twitter_res {
+    margin-left: 10px;
 }

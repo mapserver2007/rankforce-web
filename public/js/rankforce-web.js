@@ -11,23 +11,27 @@ Mixjs.module("API", rankforce, {
         console.log("init");
     },
 
-    findById: function(id, callback) {
+    getData: function(url, callback) {
         var self = this;
         self.xhr({
-            url: "/rest/" + id,
+            url: url,
             args: {type: "get", dataType: "json"},
             success: function(response) {
                 callback(response);
             }
         });
-    }
+    },
 });
 
 Mixjs.module("Data", rankforce, {
     include: rankforce.API,
 
-    get: function(id, callback) {
-        this.findById(id, callback);
+    getThreadData: function(id, callback) {
+        this.getData("/rest/" + id, callback);
+    },
+
+    getOthreThreadData: function(num, callback) {
+        this.getData("/rest/ranking/today/" + num, callback);
     }
 });
 
@@ -48,10 +52,9 @@ function initPage(threadId) {
 
     module.followButton();
 
-    module.get(threadId, function(response) {
+    module.getThreadData(threadId, function(response) {
         $('#thread_title').text(response.title);
         $("#ikioi span").append(response.ikioi.average);
-        console.log(response.tweet)
         var twitter_res = $("#twitter_res");
         twitter_res.find(".retweet").append(response.tweet.retweet);
         twitter_res.find(".favorite").append(response.tweet.favorite);
@@ -86,8 +89,16 @@ function initPage(threadId) {
         });
     });
 
+    module.getOthreThreadData(5, function(response) {
+        $("#other_thread_info").show();
+        var html = "<ul>";
+        response.forEach(function(data) {
+            html += "<li><a href='/" + data.id + "'>" + data.title + "</a> (" + data.ikioi + ")</li>\n";
+        });
+        html += "</ul>";
 
-
+        $("#other_threads").html(html);
+    });
 
     $('header .menu').click(st.toggle_nav);
     st.show_section(elem_map.thread_info);

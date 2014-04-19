@@ -50,7 +50,6 @@ module Model
       qs_list << "l=#{@@query[:limit]}" if @@query.key?(:limit)
       qs_list << "s=#{@@query[:sort].to_json}" if @@query.key?(:sort)
       https_start do |https|
-        p @@path + "?" + qs_list.join("&")
         response = JSON.parse(https.get(@@path + "?" + qs_list.join("&")).body)
       end
       init_query
@@ -91,7 +90,7 @@ class MongoLab
       .cond({:created_at => {"$gte" => Date.today.to_time, "$lt" => Date.tomorrow.to_time}})
       .sort('ikioi.average', :desc)
       .skip(0)
-      .limit(10)
+      .limit(num)
       .get
   end
 

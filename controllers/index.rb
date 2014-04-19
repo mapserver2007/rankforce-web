@@ -33,12 +33,11 @@ get '/rest/:thread_id' do
 end
 
 get '/rest/ranking/today/:num' do
-  # TODO validation
   data_list = MongoLab.today_ranking(params['num'])
   json data_list.inject([]) {|list, data|
     list << {
+      :id => data['id'],
       :title => data['title'],
-      :url => data['url'],
       :ikioi => data['ikioi']['average']
     }
   }
