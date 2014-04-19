@@ -1,0 +1,99 @@
+!!! XML
+!!!
+%html{'lang' => 'ja'}
+  %head
+    %meta{:charset => 'utf-8'}
+    %title rankforce -2chの勢いを監視-
+    %meta{:name => 'Keywords', :content => '2ちゃんねる,スマホ,スマートフォン,2ch,rankforce,Twitter,勢い'}
+    %meta{:name => 'Description', :content => '2chの勢いを監視して可視化します。'}
+    %meta{:name => 'viewport', :content => 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'}
+    %meta{:name => 'format-detection', :content => 'telephone=no'}
+    %meta{:name => 'apple-mobile-web-app-capable', :content => 'yes'}
+    %meta{:name => 'apple-mobile-web-app-status-bar-style', :content => 'black-translucent'}
+    %meta{'http-equiv' => 'content-style-type', :content => 'text/css'}
+    %link{:href => "#{app_root}/css/style.css", :rel => 'stylesheet', :type => 'text/css', :media => 'screen'}
+    %link{:href => "#{app_root}/css/sidetap.css", :rel => 'stylesheet', :type => 'text/css', :media => 'screen'}
+    %link{:href => "#{app_root}/css/theme/default/default.css", :rel => 'stylesheet', :type => 'text/css', :media => 'screen'}
+    %link{:href => "#{app_root}/css/fontello.css", :rel => 'stylesheet', :type => 'text/css', :media => 'screen'}
+  %body
+    %div.sidetap
+      %div.stp-nav
+        %nav
+          %a.selected{:href => "#", 'data-menu' => "thread_info"} 記事を見る
+          %a{:href => "#", 'data-menu' => "detail_info"} 2chのスレを見る
+          %a{:href => "#", 'data-menu' => "twitter_info"} Twitterを見る
+      %div.stp-content#content
+        %header.stp-fake-header &nbsp;
+        %div.stp-overlay.nav-toggle &nbsp;
+
+        %div.stp-content-panel#thread_info
+          %header
+            %a.header-button.icon.menu{:href => "javascript:void(0);"}
+              %span Menu
+            %a.header-button.icon.info.right{:href => "javascript:void(0);"}
+              %span Info
+            %h1.header-title @rankforce
+          %div.stp-content-frame
+            %div.stp-content-body
+              %div.container
+                %p#thread_title
+                %div#thread_summary
+              %article#ikioi_info
+                %section
+                  %h2 スレ情報
+                  %div#ikioi
+                    %span 勢い：
+                  %div#twitter_res
+                    %span.retweet RT:
+                    %span.favorite fav:
+                    %span.reply rep:
+
+        %div.stp-content-panel#detail_info
+          %header
+            %a.header-button.icon.menu{:href => "javascript:void(0);"}
+              %span Menu
+            %a.header-button.icon.info.right{:href => "javascript:void(0);"}
+              %span Info
+            %h1.header-title @rankforce
+          %div.stp-content-frame
+            %div.stp-content-body
+              %div.container
+                %div now loading...
+                %a.twitter-follow-button{:href => "https://twitter.com/rankforce", 'data-show-count' => "false", 'data-lang' => "ja"}
+
+
+        %div.stp-content-panel#twitter_info
+          %header
+            %a.header-button.icon.menu{:href => "javascript:void(0);"}
+              %span Menu
+            %a.header-button.icon.info.right{:href => "javascript:void(0);"}
+              %span Info
+            %h1.header-title @rankforce
+          %div.stp-content-frame
+            %div.stp-content-body
+              %div.container
+                %div now loading...
+
+
+    /   %article
+    /     %ul#header.header
+    /       %li.header_cell.header_cell-side.header_cell-left
+    /         %a#modal_trigger.header_cell-side_link{:href => "#top"}
+    /           %i.icon-twitter
+    /       %li.header_cell.header_cell-center
+    /         %h1#header_title.header_cell_title
+    /       %li.header_cell.header_cell-side.header_cell-right
+    /         %a#modal_trigger.header_cell-side_link{:href => "#top"}
+    /           %i.icon-menu
+
+    / %div#summary
+    / %div#origin_link
+
+    %script{:src => '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'}
+    %script{:src => "#{app_root}/js/jquery.jtruncsubstr.js"}
+    %script{:src => "#{app_root}/js/mix.js"}
+    %script{:src => "#{app_root}/js/mix.modules.js"}
+    %script{:src => "#{app_root}/js/rankforce-web.js"}
+    %script{:src => "#{app_root}/js/sidetap.min.js"}
+    %script{:type => 'text/javascript'}
+      initPage(#{@thread_id});

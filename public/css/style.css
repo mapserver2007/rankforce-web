@@ -1,0 +1,23 @@
+@charset "UTF-8";
+* {
+word-break: break-all;
+-webkit-touch-callout: none;
+-webkit-text-size-adjust: 100%
+}
+.header-title {
+    padding: 0 10px;
+}
+#thread_summary {
+    /*font-size: 12px;*/
+}
+div.separator {
+    border-bottom: 1px solid #ffff00;
+    margin: 0 10px;
+}
+#ikioi_info {
+    margin-top: 10px;
+    display: none;
+}
+#ikioi_info section {
+    padding: 0 10px;
+}
