@@ -85,6 +85,14 @@ class MongoLab
       .get[0]
   end
 
+  def self.recent(num)
+    mongo
+      .sort('id', :desc)
+      .skip(0)
+      .limit(num)
+      .get
+  end
+
   def self.today_ranking(num)
     mongo
       .cond({:created_at => {"$gte" => Date.today.to_time, "$lt" => Date.tomorrow.to_time}})

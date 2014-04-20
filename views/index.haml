@@ -20,6 +20,7 @@
       %div.stp-nav
         %nav
           %a.selected{:href => "#", 'data-menu' => "thread_info"} 記事を見る
+          %a{:href => "#", 'data-menu' => "ranking_info"} 勢いランキング
           %a{:href => "#", 'data-menu' => "detail_info"} 2chのスレを見る
           %a{:href => "#", 'data-menu' => "twitter_info"} Twitterを見る
       %div.stp-content#content
@@ -32,11 +33,11 @@
               %span Menu
             %a.header-button.icon.info.right{:href => "javascript:void(0);"}
               %span Info
-            %h1.header-title @rankforce
+            %h1.header-title rankforce
           %div.stp-content-frame
             %div.stp-content-body
               %div.container
-                %p#thread_title
+                %h2#thread_title
                 %div#thread_summary
                 %article#ikioi_info
                   %section
@@ -47,11 +48,33 @@
                       %span.retweet RT:
                       %span.favorite fav:
                       %span.reply rep:
+                    %div#origin_url
                 %article#other_thread_info
                   %section
-                    %h2 今日の人気スレ
+                    %h2 他のスレを見る
                     %div#other_threads
 
+        %div.stp-content-panel#ranking_info
+          %header
+            %a.header-button.icon.menu{:href => "javascript:void(0);"}
+              %span Menu
+            %a.header-button.icon.info.right{:href => "javascript:void(0);"}
+              %span Info
+            %h1.header-title @rankforce
+          %div.stp-content-frame
+            %div.stp-content-body
+              %div.container
+                %h2 勢いランキング(#{Date.today})
+                %ul#ranking
+                  %li.rank1
+                    %img{:src => "/images/icon-rank1.png", :alt => "1"}
+                    rank1wwwwwwww
+                  %li.rank2
+                    %img{:src => "/images/icon-rank2.png", :alt => "2"}
+                    wwwwwwwwwwww
+                  %li.rank3
+                    %img{:src => "/images/icon-rank3.png", :alt => "3"}
+                    rtetetete
 
         %div.stp-content-panel#detail_info
           %header
@@ -66,7 +89,6 @@
                 %div now loading...
                 %a.twitter-follow-button{:href => "https://twitter.com/rankforce", 'data-show-count' => "false", 'data-lang' => "ja"}
 
-
         %div.stp-content-panel#twitter_info
           %header
             %a.header-button.icon.menu{:href => "javascript:void(0);"}
@@ -78,21 +100,6 @@
             %div.stp-content-body
               %div.container
                 %div now loading...
-
-
-    /   %article
-    /     %ul#header.header
-    /       %li.header_cell.header_cell-side.header_cell-left
-    /         %a#modal_trigger.header_cell-side_link{:href => "#top"}
-    /           %i.icon-twitter
-    /       %li.header_cell.header_cell-center
-    /         %h1#header_title.header_cell_title
-    /       %li.header_cell.header_cell-side.header_cell-right
-    /         %a#modal_trigger.header_cell-side_link{:href => "#top"}
-    /           %i.icon-menu
-
-    / %div#summary
-    / %div#origin_link
 
     %script{:src => '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'}
     %script{:src => "#{app_root}/js/jquery.jtruncsubstr.js"}

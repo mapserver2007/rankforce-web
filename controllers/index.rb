@@ -32,6 +32,17 @@ get '/rest/:thread_id' do
   })
 end
 
+get '/rest/recent/:num' do
+  data_list = MongoLab.recent(params['num'])
+  json data_list.inject([]) {|list, data|
+    list << {
+      :id => data['id'],
+      :title => data['title'],
+      :ikioi => data['ikioi']['average']
+    }
+  }
+end
+
 get '/rest/ranking/today/:num' do
   data_list = MongoLab.today_ranking(params['num'])
   json data_list.inject([]) {|list, data|

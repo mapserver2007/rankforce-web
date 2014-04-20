@@ -30,7 +30,11 @@ Mixjs.module("Data", rankforce, {
         this.getData("/rest/" + id, callback);
     },
 
-    getOthreThreadData: function(num, callback) {
+    getRecentThreadData: function(num, callback) {
+        this.getData("/rest/recent/" + num, callback);
+    },
+
+    getRankingData: function(num, callback) {
         this.getData("/rest/ranking/today/" + num, callback);
     }
 });
@@ -46,6 +50,7 @@ function initPage(threadId) {
     var st = sidetap();
     var elem_map = {
         thread_info  : $("#thread_info"),
+        ranking_info  : $("#ranking_info"),
         detail_info  : $("#detail_info"),
         twitter_info : $("#twitter_info")
     };
@@ -56,9 +61,11 @@ function initPage(threadId) {
         $('#thread_title').text(response.title);
         $("#ikioi span").append(response.ikioi.average);
         var twitter_res = $("#twitter_res");
+        var origin_url = $("#origin_url");
         twitter_res.find(".retweet").append(response.tweet.retweet);
         twitter_res.find(".favorite").append(response.tweet.favorite);
         twitter_res.find(".reply").append(response.tweet.reply);
+        origin_url.html("<a href='" + response.url + "'>" + response.url + "</a>");
 
         $("#ikioi_info").show();
         $("#thread_summary")
@@ -89,7 +96,7 @@ function initPage(threadId) {
         });
     });
 
-    module.getOthreThreadData(5, function(response) {
+    module.getRecentThreadData(5, function(response) {
         $("#other_thread_info").show();
         var html = "<ul>";
         response.forEach(function(data) {
@@ -98,6 +105,23 @@ function initPage(threadId) {
         html += "</ul>";
 
         $("#other_threads").html(html);
+    });
+
+    module.getRankingData(10, function(response) {
+        var html = "";
+        for (var i = 0; i < response.length; i++) {
+            var rank_no = i + 1;
+            html += "<li class='rank" + (i+1) + "'>\n";
+            if (i === 0 || i === 1 || i === 2) {
+                html += "<img src='/images/icon-rank" + rank_no + ".png' alt='" + rank_no + "'/>";
+            }
+            else {
+                html += "<span class='rank-other'>" + rank_no + "</span>";
+            }
+            html += "<a href='/" + response[i].id + "'>" + response[i].title + "</a> (" + response[i].ikioi + ")\n";
+            html += "</li>\n";
+        }
+        $("#ranking").html(html);
     });
 
     $('header .menu').click(st.toggle_nav);
