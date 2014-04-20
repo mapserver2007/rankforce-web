@@ -4,7 +4,7 @@ word-break: break-all;
 -webkit-touch-callout: none;
 -webkit-text-size-adjust: 100%
 }
-.header-title {
+h2.header-title {
     padding: 0 10px;
 }
 #thread_summary {
@@ -30,6 +30,23 @@ div.stp-content-body article {
 div..stp-content-body section div {
     margin-left: 10px;
 }
-#ikioi, #twitter_res {
+#ikioi, #twitter_res, #origin_url {
     margin-left: 10px;
+}
+#ranking {
+    padding-left: 15px;
+}
+#ranking img {
+    width: 16px;
+    height: 16px;
+}
+span.rank-other {
+    color: #fff;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    padding-top: 5px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: normal;
 }
