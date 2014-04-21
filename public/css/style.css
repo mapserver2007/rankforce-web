@@ -50,3 +50,33 @@ span.rank-other {
     font-size: 12px;
     font-weight: normal;
 }
+div.profile-header {
+    border-radius: 7px;
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
+}
+div.profile-image {
+    position: relative;
+    z-index: 5;
+    margin: 20px auto 6px;
+    display: block;
+    width: 73px;
+    height: 73px;
+    border: 4px solid #fff;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.25);
+}
+img.size73 {
+    width: 73px;
+    height: 73px;
+    border-radius: 3px;
+}
+div.follow-button {
+    text-align: center;
+    margin-left: 60px;

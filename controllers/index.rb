@@ -53,9 +53,3 @@ get '/rest/ranking/today/:num' do
     }
   }
 end
-
-get '/rest/ranking/month/:num' do
-
-end
-
-

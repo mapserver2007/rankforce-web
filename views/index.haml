@@ -78,7 +78,6 @@
             %div.stp-content-body
               %div.container
                 %div now loading...
-                %a.twitter-follow-button{:href => "https://twitter.com/rankforce", 'data-show-count' => "false", 'data-lang' => "ja"}
 
         %div.stp-content-panel#twitter_info
           %header
@@ -96,11 +95,17 @@
           %header
             %a.header-button.cancel.right{:href => "javascript:void(0);"}
               %span#back-menu Done
-            %h1.header-title rankforceについて
+            %h1.header-title About rankforce
           %div.stp-content-frame
             %div.stp-content-body
               %div.container
-                %div now loading...
+                %div.profile-header
+                  %div.profile-image
+                    %img.size73{:src => "#{app_root}/images/icon-rankforce.png"}
+                  %a{:href => "https://twitter.com/rankforce"} @rankforce
+                  %p 2chの勢いのある話題をツイートします。
+              %div.follow-button
+                %a.twitter-follow-button{:href => "https://twitter.com/rankforce", 'data-show-count' => "true", 'data-lang' => "ja"}
 
     %script{:src => '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'}
     %script{:src => "#{app_root}/js/jquery.jtruncsubstr.js"}
