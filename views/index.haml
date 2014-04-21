@@ -32,7 +32,7 @@
             %a.header-button.icon.menu{:href => "javascript:void(0);"}
               %span Menu
             %a.header-button.icon.info.right{:href => "javascript:void(0);"}
-              %span Info
+              %span{'data-menu' => "thread_info"} Info
             %h1.header-title rankforce
           %div.stp-content-frame
             %div.stp-content-body
@@ -59,30 +59,21 @@
             %a.header-button.icon.menu{:href => "javascript:void(0);"}
               %span Menu
             %a.header-button.icon.info.right{:href => "javascript:void(0);"}
-              %span Info
-            %h1.header-title @rankforce
+              %span{'data-menu' => "ranking_info"} Info
+            %h1.header-title rankforce
           %div.stp-content-frame
             %div.stp-content-body
               %div.container
                 %h2 勢いランキング(#{Date.today})
                 %ul#ranking
-                  %li.rank1
-                    %img{:src => "/images/icon-rank1.png", :alt => "1"}
-                    rank1wwwwwwww
-                  %li.rank2
-                    %img{:src => "/images/icon-rank2.png", :alt => "2"}
-                    wwwwwwwwwwww
-                  %li.rank3
-                    %img{:src => "/images/icon-rank3.png", :alt => "3"}
-                    rtetetete
 
         %div.stp-content-panel#detail_info
           %header
             %a.header-button.icon.menu{:href => "javascript:void(0);"}
               %span Menu
             %a.header-button.icon.info.right{:href => "javascript:void(0);"}
-              %span Info
-            %h1.header-title @rankforce
+              %span{'data-menu' => "detail_info"} Info
+            %h1.header-title rankforce
           %div.stp-content-frame
             %div.stp-content-body
               %div.container
@@ -94,8 +85,18 @@
             %a.header-button.icon.menu{:href => "javascript:void(0);"}
               %span Menu
             %a.header-button.icon.info.right{:href => "javascript:void(0);"}
-              %span Info
-            %h1.header-title @rankforce
+              %span{'data-menu' => "twitter_info"} Info
+            %h1.header-title rankforce
+          %div.stp-content-frame
+            %div.stp-content-body
+              %div.container
+                %div now loading...
+
+        %div.stp-content-panel#about
+          %header
+            %a.header-button.cancel.right{:href => "javascript:void(0);"}
+              %span#back-menu Done
+            %h1.header-title rankforceについて
           %div.stp-content-frame
             %div.stp-content-body
               %div.container

@@ -50,10 +50,11 @@ function initPage(threadId) {
     var st = sidetap();
     var elem_map = {
         thread_info  : $("#thread_info"),
-        ranking_info  : $("#ranking_info"),
+        ranking_info : $("#ranking_info"),
         detail_info  : $("#detail_info"),
         twitter_info : $("#twitter_info")
     };
+    var about = $("#about");
 
     module.followButton();
 
@@ -125,5 +126,18 @@ function initPage(threadId) {
     });
 
     $('header .menu').click(st.toggle_nav);
+    $('header .info').click(function() {
+        $("#back-menu").attr("data-menu", $(this).find("span").data("menu"));
+        return st.show_section(about, {
+            animation: 'upfrombottom'
+        });
+    });
+    $('#about a.cancel').click(function() {
+        var menu = $(this).find("span").data("menu");
+        return st.show_section(elem_map[menu], {
+            animation: 'downfromtop'
+        });
+    });
+
     st.show_section(elem_map.thread_info);
 }

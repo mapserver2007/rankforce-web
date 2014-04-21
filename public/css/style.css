@@ -1,8 +1,8 @@
 @charset "UTF-8";
 * {
-word-break: break-all;
--webkit-touch-callout: none;
--webkit-text-size-adjust: 100%
+    word-break: break-all;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: 100%
 }
 h2.header-title {
     padding: 0 10px;
