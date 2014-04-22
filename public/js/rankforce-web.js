@@ -5,11 +5,7 @@ Mixjs.module("Base", rankforce, {
 });
 
 Mixjs.module("API", rankforce, {
-    include: [Http],
-
-    mixed: function() {
-        console.log("init");
-    },
+    include: Http,
 
     getData: function(url, callback) {
         var self = this;
@@ -29,11 +25,9 @@ Mixjs.module("Data", rankforce, {
     getThreadData: function(id, callback) {
         this.getData("/rest/" + id, callback);
     },
-
     getRecentThreadData: function(num, callback) {
         this.getData("/rest/recent/" + num, callback);
     },
-
     getRankingData: function(num, callback) {
         this.getData("/rest/ranking/today/" + num, callback);
     }
@@ -43,6 +37,9 @@ Mixjs.module("UI", rankforce, {
     followButton: function() {
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     },
+    isSmartDevice: function() {
+        return /(?:ip(?:[ao]d|hone)|android)/.test(window.navigator.userAgent.toLowerCase());
+    }
 });
 
 function initPage(threadId) {
@@ -59,16 +56,22 @@ function initPage(threadId) {
     module.followButton();
 
     module.getThreadData(threadId, function(response) {
-        $('#thread_title').text(response.title);
-        $("#ikioi span").append(response.ikioi.average);
-        var twitter_res = $("#twitter_res");
-        var origin_url = $("#origin_url");
-        twitter_res.find(".retweet").append(response.tweet.retweet);
-        twitter_res.find(".favorite").append(response.tweet.favorite);
-        twitter_res.find(".reply").append(response.tweet.reply);
-        origin_url.html("<a href='" + response.url + "'>" + response.url + "</a>");
+        $('#thread_title').html("<a href='" + response.url + "'>" + response.title + "</a>");
+        $("#ikioi").append("<span class='sub-header-color'>" + response.ikioi.average + "</span>");
 
-        $("#ikioi_info").show();
+        var twitter_res = $("#twitter_res");
+        twitter_res.find(".retweet").append("<span class='sub-header-color'>" + response.tweet.retweet + "</span>");
+        twitter_res.find(".favorite").append("<span class='sub-header-color'>" + response.tweet.favorite + "</span>");
+        twitter_res.find(".reply").append("<span class='sub-header-color'>" + response.tweet.reply + "</span>");
+
+        var twitterUrl = "https://twitter.com/rankforce";
+        if (module.isSmartDevice()) {
+            twitterUrl = "Twitter:@rankforce";
+        }
+        $("#social-twitter").attr("href", twitterUrl);
+        $("#social-line").attr("href", "http://line.naver.jp/R/msg/text/?" + response.line_msg);
+
+        $("#sub-header").show();
         $("#thread_summary")
             .html(response.summary)
             .jTruncSubstr({

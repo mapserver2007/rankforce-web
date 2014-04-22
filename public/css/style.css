@@ -7,15 +7,31 @@
 h2.header-title {
     padding: 0 10px;
 }
+div#sub-header {
+    font-weight: bold;
+    display: none;
+}
+div.sub-left-container {
+    float: left;
+}
+div.sub-right-container {
+    float: right;
+}
+div.sub-right-container a {
+    text-decoration: none;
+}
+div.clearfix {
+    clear: both;
+}
+span.sub-header-color {
+    color: #ff0000;
+}
 #thread_summary {
     /*font-size: 12px;*/
 }
 div.separator {
     border-bottom: 1px solid #ffff00;
     margin: 0 10px;
-}
-#ikioi_info {
-    display: none;
 }
 #other_thread_info {
     display: none;
@@ -28,9 +44,6 @@ div.stp-content-body article {
     padding: 10px;
 }
 div..stp-content-body section div {
-    margin-left: 10px;
-}
-#ikioi, #twitter_res, #origin_url {
     margin-left: 10px;
 }
 #ranking {
@@ -77,6 +90,11 @@ img.size73 {
     height: 73px;
     border-radius: 3px;
 }
+img.size16 {
+    width: 24px;
+    height: 24px;
+}
 div.follow-button {
     text-align: center;
     margin-left: 60px;
+}

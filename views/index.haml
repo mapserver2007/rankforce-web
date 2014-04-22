@@ -26,7 +26,6 @@
       %div.stp-content#content
         %header.stp-fake-header &nbsp;
         %div.stp-overlay.nav-toggle &nbsp;
-
         %div.stp-content-panel#thread_info
           %header
             %a.header-button.icon.menu{:href => "javascript:void(0);"}
@@ -37,18 +36,21 @@
           %div.stp-content-frame
             %div.stp-content-body
               %div.container
-                %h2#thread_title
-                %div#thread_summary
-                %article#ikioi_info
-                  %section
-                    %h2 スレ情報
-                    %div#ikioi
-                      %span 勢い：
-                    %div#twitter_res
+                %div#sub-header
+                  %div.sub-left-container
+                    %span#ikioi 勢い:
+                    %span#twitter_res
                       %span.retweet RT:
                       %span.favorite fav:
                       %span.reply rep:
-                    %div#origin_url
+                  %div.sub-right-container
+                    %a#social-twitter{:href => "#"}
+                      %img.size16{:src => "#{app_root}/images/icon-twitter.png"}
+                    %a#social-line{:href => "#"}
+                      %img.size16{:src => "#{app_root}/images/icon-line.png"}
+                  %div.clearfix
+                %h2#thread_title
+                %div#thread_summary
                 %article#other_thread_info
                   %section
                     %h2 他のスレを見る
